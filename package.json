@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/dj-day/inventory/issues"
   },
-  "homepage": "https://github.com/dj-day/inventory#readme"
+  "homepage": "https://github.com/dj-day/inventory#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
