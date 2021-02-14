@@ -17,13 +17,13 @@ app.use(
 app.get('/inventory', body('name').isString(), function(req, res) {
 
   if(CONSTANTS.API_KEY !== req.get('Api-Key')) {
-    return res.sendStatus(401);
+    res.status(401);
   } else {
     dataService.query(QUERIES.GET_INVENTORY, null, (error, results) => {
       if(error) {
-        console.log(err);
+        console.log(error);
       }
-      return res.send(results.rows);
+      res.send(results.rows);
     });
   }
 });
