@@ -14,18 +14,21 @@ app.use(
   })
 );
 
-app.get('/inventory', body('name').isString(), function(req, res) {
+app.get('/inventory', (req, res) => {
 
-  if(CONSTANTS.API_KEY !== req.get('Api-Key') || req.get('Api-Key') === null) {
+  if(CONSTANTS.API_KEY !== req.get('Api-Key')) {
     res.status(401);
   } else {
     dataService.query(QUERIES.GET_INVENTORY, null, (error, results) => {
       if(error) {
         console.log(error);
       }
-      res.send(results.rows);
+      res.status(200);
+      res.body(results.rows);
     });
   }
+
+  return res.send();
 });
 
 app.post('/inventory', body('name').isString(), function(req, res) {
