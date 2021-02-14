@@ -23,8 +23,7 @@ app.get('/inventory', (req, res) => {
       if(error) {
         console.log(error);
       }
-      res.status(200);
-      res.body(results.rows);
+      res.status(200).json(results.rows);
     });
   }
 
