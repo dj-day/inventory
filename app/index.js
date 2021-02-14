@@ -32,7 +32,7 @@ app.post('/inventory', body('name').isString(), function(req, res) {
   const errors = validationResult(req);
 
   if(CONSTANTS.API_KEY !== req.get('Api-Key')) {
-    res.status(401);
+    res.sendStatus(401);
   } else if (!errors.isEmpty()) {
     res.status(400).json({ errors: errors.array() });
   } else {
@@ -41,10 +41,9 @@ app.post('/inventory', body('name').isString(), function(req, res) {
         console.log(error);
       }
 
-      res.status(200);
+      res.sendStatus(200);
     });
   }
-  return res.send();
 });
 
 app.listen(port, () => {
