@@ -16,7 +16,7 @@ app.use(
 
 app.get('/inventory', body('name').isString(), function(req, res) {
 
-  if(CONSTANTS.API_KEY !== req.get('Api-Key')) {
+  if(CONSTANTS.API_KEY !== req.get('Api-Key') || req.get('Api-Key') === null) {
     res.status(401);
   } else {
     dataService.query(QUERIES.GET_INVENTORY, null, (error, results) => {
